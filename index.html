@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f4f2ed" />
+<title>分手后，你有多想前任？｜人类切片实验室</title>
+<style>
+:root{
+  --bg:#f4f2ed;--paper:#fbfaf7;--ink:#303331;--muted:#858781;--line:#e6e3dc;
+  --rose:#c98791;--rose-soft:#f1e3e3;--sage:#879b8d;--sage-soft:#e6ece6;
+  --blue:#8c9ca9;--blue-soft:#e8edf0;--sand:#c4b69e;--sand-soft:#f0ece3;
+  --plum:#a18e9d;--shadow:0 18px 55px rgba(61,58,51,.08);--radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","微软雅黑","PingFang SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.75;letter-spacing:.01em}
+button,select{font:inherit}button{cursor:pointer}
+button:focus-visible,select:focus-visible{outline:3px solid rgba(135,155,141,.35);outline-offset:3px}
+#app{min-height:100vh;overflow:hidden}
+.shell{width:min(100% - 40px,1020px);margin:0 auto}
+.brandbar{display:flex;align-items:center;justify-content:space-between;padding:28px 0 20px;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.brand-mark{width:42px;height:42px;display:grid;place-items:center;border:1px solid #d8d5cd;border-radius:50%;background:rgba(255,255,255,.48)}
+.brand-mark svg{width:27px;height:27px}
+.brand-name{font-weight:700;font-size:14px;letter-spacing:.12em}
+.brand-en{font-size:9px;letter-spacing:.16em;color:var(--muted);margin-top:1px}
+.top-note{font-size:11px;letter-spacing:.12em;color:#9b9b94}
+.cover{position:relative;min-height:calc(100vh - 92px);display:flex;align-items:center;padding:34px 0 80px}
+.cover-grid{display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:36px;width:100%}
+.cover-copy{position:relative;z-index:1;padding:22px 0 35px}
+.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);font-weight:700;display:flex;align-items:center;gap:10px}
+.kicker:before{content:"";width:25px;height:1px;background:currentColor}
+h1{font-size:clamp(36px,5.2vw,62px);line-height:1.22;letter-spacing:-.045em;margin:24px 0 18px;font-weight:700}
+h1 .light{font-weight:400;color:#7d817b}
+.cover-desc{font-size:16px;color:#777b74;max-width:470px;line-height:2;margin:0 0 30px}
+.meta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:#858981;font-size:12px;margin:0 0 34px}
+.meta-row span{display:flex;align-items:center;gap:7px}
+.meta-dot{width:4px;height:4px;border-radius:50%;background:#b6b5ad}
+.primary-btn{border:0;border-radius:999px;background:var(--ink);color:#fff;padding:15px 28px;min-width:190px;display:inline-flex;justify-content:center;align-items:center;gap:18px;box-shadow:0 9px 22px rgba(48,51,49,.13);transition:transform .25s,background .25s,box-shadow .25s}
+.primary-btn:hover{transform:translateY(-2px);background:#454a45;box-shadow:0 13px 26px rgba(48,51,49,.16)}
+.primary-btn .arrow{font-size:20px;line-height:1}
+.secondary-btn{background:transparent;color:var(--ink);border:1px solid #c9c8c0;border-radius:999px;padding:13px 22px;transition:.2s}
+.secondary-btn:hover{background:#eeece6}
+.hero-art{position:relative;min-height:490px;display:grid;place-items:center;isolation:isolate}
+.art-orbit{position:absolute;width:min(100%,470px);aspect-ratio:1;border:1px solid rgba(135,155,141,.25);border-radius:50%;animation:slowSpin 42s linear infinite}
+.art-orbit:before,.art-orbit:after{content:"";position:absolute;border:1px solid rgba(201,135,145,.22);border-radius:50%;inset:34px}
+.art-orbit:after{inset:70px;border-color:rgba(140,156,169,.22)}
+.art-core{position:relative;width:min(77%,340px);aspect-ratio:1;border-radius:49% 51% 46% 54%;background:radial-gradient(circle at 35% 28%,#fffdfa 0 6%,#eee8df 28%,#e7e1d8 58%,#dce4dc 100%);box-shadow:inset -18px -22px 42px rgba(148,151,137,.13),0 28px 55px rgba(93,97,83,.10);animation:float 6s ease-in-out infinite}
+.art-core:before{content:"";position:absolute;inset:15%;border:1px solid rgba(135,155,141,.34);border-radius:50%}
+.art-core:after{content:"";position:absolute;width:18px;height:18px;right:14%;top:16%;border-radius:50%;background:var(--rose);opacity:.65;box-shadow:-230px 220px 0 -5px var(--sage),-120px -30px 0 -7px var(--blue)}
+.art-heart{position:absolute;left:50%;top:50%;width:116px;height:104px;transform:translate(-50%,-47%) rotate(-8deg);filter:drop-shadow(0 12px 16px rgba(162,113,119,.14))}
+.art-heart svg{width:100%;height:100%;overflow:visible}
+.art-thread{position:absolute;width:190px;height:190px;border:1px dashed rgba(161,142,157,.5);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);animation:slowSpin 22s linear infinite reverse}
+.art-thread:before{content:"";position:absolute;top:12px;left:22px;width:10px;height:10px;background:var(--rose);border-radius:50%;box-shadow:138px 130px 0 var(--sage)}
+.art-caption{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:10px;letter-spacing:.22em;color:#9b9b93}
+.spark{position:absolute;color:#b2a89a;font-size:18px;animation:twinkle 3.2s ease-in-out infinite}
+.spark.s1{top:13%;right:18%}.spark.s2{bottom:22%;left:9%;animation-delay:1.2s}.spark.s3{top:26%;left:12%;animation-delay:2s}
+.cover-bottom{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#a0a098;letter-spacing:.12em}
+.cover-bottom .disclaimer{letter-spacing:0;text-align:right}
+.info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px;max-width:520px}
+.info-chip{border-top:1px solid var(--line);padding:14px 8px 0 0}
+.info-chip strong{display:block;font-size:13px;font-weight:600;color:#555a53;margin-bottom:3px}
+.info-chip small{font-size:11px;color:#969890}
+.fade-up{animation:fadeUp .85s both}
+.delay1{animation-delay:.12s}.delay2{animation-delay:.24s}.delay3{animation-delay:.36s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(2deg)}}
+@keyframes slowSpin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+/* assessment */
+.assessment{padding:0 0 60px;min-height:100vh}
+.assess-header{padding:18px 0 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.assess-header .brand-mark{width:34px;height:34px}.assess-header .brand-mark svg{width:22px;height:22px}
+.step-indicator{font-size:12px;color:#858981;letter-spacing:.08em}
+.progress-wrap{height:3px;background:#e7e5df;border-radius:6px;overflow:hidden;margin:18px 0 34px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--sage),var(--rose));border-radius:6px;transition:width .45s cubic-bezier(.2,.75,.2,1)}
+.assess-main{width:min(100%,760px);margin:0 auto}
+.section-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:10px}
+.section-title{font-size:clamp(25px,4vw,34px);letter-spacing:-.03em;line-height:1.35;margin:0 0 9px}
+.section-intro{font-size:13px;color:#858981;line-height:1.8;margin:0 0 26px;max-width:660px}
+.context-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.context-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 19px;min-height:130px}
+.context-card label{display:block;font-size:13px;font-weight:600;margin-bottom:12px}
+.context-options{display:flex;gap:7px;flex-wrap:wrap}
+.context-option{border:1px solid #e2dfd8;background:#fff;color:#6d716b;border-radius:999px;padding:7px 12px;font-size:11px;transition:.2s}
+.context-option.selected{background:var(--sage-soft);border-color:#a9b8ac;color:#4e6858}
+.question-list{display:grid;gap:13px}
+.question-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 19px 17px;box-shadow:0 4px 15px rgba(60,60,50,.025)}
+.question-head{display:flex;gap:11px;align-items:flex-start;margin-bottom:14px}
+.question-no{flex:0 0 27px;height:27px;border-radius:50%;display:grid;place-items:center;background:var(--sand-soft);color:#8e806c;font-size:11px;font-weight:700}
+.question-text{font-size:14px;line-height:1.65;font-weight:500;padding-top:1px}
+.scale-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.scale-btn{border:1px solid #e5e2db;background:#fff;border-radius:11px;color:#7c8079;min-height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transition:.18s;padding:5px 2px}
+.scale-btn b{font-size:14px;font-weight:600;line-height:1.3}
+.scale-btn small{font-size:9px;white-space:nowrap;color:#a2a49d}
+.scale-btn.selected{background:var(--sage-soft);border-color:#9bad9f;color:#496354;box-shadow:inset 0 0 0 1px rgba(135,155,141,.12)}
+.scale-btn.selected small{color:#6d8775}
+.scale-hint{font-size:10px;color:#a0a198;display:flex;justify-content:space-between;margin:9px 3px 0}
+.nav-row{display:flex;align-items:center;justify-content:space-between;margin-top:28px;gap:12px}
+.nav-row .next-btn{margin-left:auto}
+.nav-row button:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none}
+.step-footnote{font-size:10px;color:#a0a198;text-align:center;margin:28px 0 0}
+/* results */
+.results{padding:0 0 70px}
+.result-top{position:relative;overflow:hidden;background:#e9ece6;border:1px solid #dfe5dc;border-radius:26px;padding:34px 34px 30px;margin:26px auto 22px;display:grid;grid-template-columns:1fr 210px;gap:20px;align-items:center}
+.result-top:after{content:"";position:absolute;width:340px;height:340px;border:1px solid rgba(135,155,141,.22);border-radius:50%;right:-100px;top:-160px;box-shadow:0 0 0 30px rgba(255,255,255,.12),0 0 0 65px rgba(255,255,255,.09)}
+.result-kicker{font-size:10px;letter-spacing:.2em;color:#738375;font-weight:700}
+.result-top h2{font-size:clamp(25px,4vw,36px);line-height:1.35;margin:10px 0 9px;letter-spacing:-.03em}
+.result-top p{font-size:13px;color:#6d756d;max-width:560px;margin:0;line-height:1.9}
+.score-side{position:relative;z-index:1;display:grid;place-items:center}
+.score-ring{width:166px;height:166px;position:relative;display:grid;place-items:center}
+.score-ring svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring .ring-bg{stroke:rgba(255,255,255,.78);stroke-width:8;fill:none}
+.score-ring .ring-val{stroke:#879b8d;stroke-width:8;stroke-linecap:round;fill:none;stroke-dasharray:440;stroke-dashoffset:440;transition:stroke-dashoffset 1.5s cubic-bezier(.2,.75,.2,1)}
+.score-num{font-size:42px;font-weight:700;letter-spacing:-.06em;line-height:1}
+.score-unit{font-size:10px;color:#7d877b;letter-spacing:.13em;margin-top:6px}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:21px;padding:23px 24px;min-width:0;box-shadow:0 5px 18px rgba(60,60,50,.025)}
+.panel.wide{grid-column:1/-1}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:15px}
+.panel-title{font-size:16px;font-weight:700;margin:0;letter-spacing:-.02em}
+.panel-sub{font-size:10px;color:#a0a198;margin-top:3px}
+.panel-tag{border-radius:99px;background:var(--sand-soft);color:#8e806c;padding:4px 9px;font-size:9px;white-space:nowrap}
+.radar-wrap{display:grid;place-items:center;padding:0 0 2px}
+.radar-svg{width:min(100%,390px);height:auto;overflow:visible}
+.radar-svg text{font-family:"Microsoft YaHei","微软雅黑",sans-serif;fill:#7c8079;font-size:11px}
+.legend-note{font-size:10px;color:#a0a198;text-align:center;margin-top:1px}
+.component-list{display:grid;gap:13px;margin-top:13px}
+.component-line{display:grid;grid-template-columns:86px 1fr 35px;gap:10px;align-items:center;font-size:11px}
+.component-line .label{color:#747970}
+.mini-track{height:7px;background:#efeee9;border-radius:99px;overflow:hidden}
+.mini-fill{height:100%;width:0;border-radius:99px;background:var(--sage);transition:width 1s ease}
+.component-line .num{text-align:right;color:#7b8078;font-variant-numeric:tabular-nums}
+.style-bars{display:grid;gap:15px;margin:15px 0 3px}
+.style-row{display:grid;grid-template-columns:78px 1fr 38px;align-items:center;gap:10px;font-size:11px}
+.style-name{display:flex;align-items:center;gap:6px;color:#686e66}
+.style-mark{width:7px;height:7px;border-radius:50%;background:var(--bar-color)}
+.style-track{height:9px;border-radius:99px;background:#efeee9;overflow:hidden}
+.style-fill{height:100%;width:0;background:var(--bar-color);border-radius:99px;transition:width 1s ease}
+.style-num{text-align:right;color:#7a7f77;font-variant-numeric:tabular-nums}
+.style-details{margin-top:13px;border-top:1px solid #efede7;padding-top:12px}.style-details summary{font-size:11px;color:#7e857c;cursor:pointer;list-style:none}.style-details summary::-webkit-details-marker{display:none}.style-details summary:after{content:"＋";float:right;color:#a3a49c}.style-details[open] summary:after{content:"－"}.style-note-list{display:grid;grid-template-columns:1fr 1fr;gap:11px 14px;margin-top:14px}.style-note-row{display:flex;gap:8px;align-items:flex-start}.style-note-dot{flex:0 0 7px;width:7px;height:7px;border-radius:50%;margin-top:7px}.style-note-row b{font-size:10px;color:#687067}.style-note-row p{margin:3px 0 0;font-size:10px;line-height:1.7;color:#92968e}
+.top-style-note{margin-top:18px;padding:13px 15px;background:#f4f2ed;border-radius:13px;color:#747970;font-size:11px;line-height:1.8}
+.attachment-chart{width:100%;height:auto;display:block;margin:2px auto 0;max-width:460px}
+.attachment-chart text{font-family:"Microsoft YaHei","微软雅黑",sans-serif;fill:#83877f;font-size:10px}
+.attachment-summary{padding:13px 15px;background:var(--blue-soft);border-radius:13px;margin-top:10px;font-size:11px;color:#697781;line-height:1.85}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.insight{padding:15px 15px 14px;border-radius:15px;background:#f5f3ee;border:1px solid #efede6}
+.insight .num{font-size:10px;color:#a09f96;letter-spacing:.1em}
+.insight h4{font-size:13px;margin:4px 0 6px}
+.insight p{font-size:11px;color:#81857d;line-height:1.8;margin:0}
+.detail-list{display:grid;gap:11px}
+.detail-item{display:grid;grid-template-columns:105px 1fr;gap:13px;padding:13px 0;border-bottom:1px solid #efede7}
+.detail-item:last-child{border-bottom:0;padding-bottom:0}
+.detail-item strong{font-size:12px;font-weight:600;color:#5f665f}
+.detail-item p{margin:0;font-size:11px;line-height:1.85;color:#82867f}
+.recommend-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.recommend{background:#f3f4ef;border-radius:15px;padding:15px}
+.recommend .rec-index{font-size:10px;color:#94a293;letter-spacing:.1em}
+.recommend h4{font-size:12px;margin:5px 0 7px}
+.recommend p{font-size:11px;color:#81867e;line-height:1.8;margin:0}
+.context-note{border-left:3px solid var(--rose);padding:4px 0 4px 14px;font-size:12px;color:#757a72;line-height:1.9}
+.result-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:28px auto 10px}
+.method-details{margin:24px auto 0;background:rgba(255,255,255,.42);border:1px solid var(--line);border-radius:16px;padding:15px 18px;color:#858981}
+.method-details summary{cursor:pointer;color:#6e746c;font-size:12px;font-weight:600;list-style:none}
+.method-details summary::-webkit-details-marker{display:none}
+.method-details summary:after{content:"＋";float:right;color:#a3a49c}
+.method-details[open] summary:after{content:"－"}
+.method-content{font-size:11px;line-height:1.9;margin-top:14px}
+.method-content a{color:#778d7d;text-decoration:none;border-bottom:1px solid #cbd5cc}
+.method-content li{margin:6px 0}
+.footer{padding:24px 0 30px;text-align:center;font-size:10px;color:#a3a39b;letter-spacing:.05em}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);padding:10px 18px;background:#3d433e;color:#fff;border-radius:99px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:30;box-shadow:0 8px 20px rgba(0,0,0,.13)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.result-reveal{animation:resultReveal .9s both}
+@keyframes resultReveal{from{opacity:0;transform:translateY(16px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:760px){
+ .shell{width:min(100% - 30px,620px)}.brandbar{padding:18px 0 12px}.brand-mark{width:37px;height:37px}.top-note{font-size:9px}
+ .cover{min-height:auto;padding:30px 0 68px}.cover-grid{grid-template-columns:1fr;gap:6px}.cover-copy{padding:10px 0 0}.cover-desc{font-size:14px}.hero-art{min-height:330px;grid-row:1}.art-orbit{width:min(82vw,330px)}.art-core{width:min(64vw,250px)}.art-heart{width:90px;height:82px}.art-caption{bottom:8px}.cover-bottom{bottom:18px;display:block;line-height:1.8}.cover-bottom .disclaimer{text-align:left}
+ .info-strip{margin-top:30px}.info-chip{padding-top:10px}.info-chip strong{font-size:12px}.info-chip small{font-size:10px}
+ .assess-header{padding-top:12px}.progress-wrap{margin:14px 0 26px}.context-grid{grid-template-columns:1fr;gap:10px}.context-card{min-height:auto;padding:15px}.question-card{padding:15px 13px}.question-text{font-size:13px}.scale-row{gap:5px}.scale-btn{min-height:45px;border-radius:9px}.scale-btn small{font-size:8px}.section-intro{font-size:12px;margin-bottom:20px}
+ .result-top{grid-template-columns:1fr 126px;padding:22px 18px;gap:4px;margin-top:17px;border-radius:20px}.score-ring{width:118px;height:118px}.score-num{font-size:32px}.result-top p{font-size:11px}.result-top h2{font-size:24px}.result-grid{grid-template-columns:1fr;gap:11px}.panel{padding:18px 16px;border-radius:18px}.panel.wide{grid-column:auto}.insight-grid{grid-template-columns:1fr}.insight{padding:13px}.detail-item{grid-template-columns:84px 1fr;gap:10px}.recommend-list{grid-template-columns:1fr}.recommend{padding:13px}.style-row{grid-template-columns:72px 1fr 32px}.style-note-list{grid-template-columns:1fr}.attachment-summary{font-size:10px}
+}
+@media(max-width:380px){.scale-btn small{font-size:7px}.scale-row{gap:3px}.scale-btn{padding:4px 0}.result-top{grid-template-columns:1fr 106px}.score-ring{width:102px;height:102px}.score-num{font-size:28px}.meta-row{gap:10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+@media print{
+ body{background:#fff}.brandbar,.assess-header,.result-actions,.method-details,.footer,.toast{display:none!important}.shell{width:100%;max-width:none}.results{padding:0}.result-top,.panel{break-inside:avoid;box-shadow:none}.result-grid{gap:9px}.panel{padding:16px}.result-top{margin-top:0}.result-reveal{animation:none}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="cover" class="shell">
+    <header class="brandbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 36 36" fill="none"><path d="M6.5 15.2 10 5.7l7.5 5.2 8-5.2 4 9.6c2.1 7-2.7 14.5-11.2 14.5S4.4 22.2 6.5 15.2Z" stroke="#68786d" stroke-width="1.5" stroke-linejoin="round"/><circle cx="13.2" cy="18" r="1.6" fill="#68786d"/><circle cx="23" cy="18" r="1.6" fill="#68786d"/><path d="M15.5 23.2c1.7 1.5 3.8 1.5 5.4 0" stroke="#c98791" stroke-width="1.5" stroke-linecap="round"/><circle cx="27.6" cy="26.5" r="5.1" stroke="#879b8d" stroke-width="1.3"/><path d="m31.3 30.2 3 3" stroke="#879b8d" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <div><div class="brand-name">人类切片实验室</div><div class="brand-en">HUMAN SLICE LABORATORY</div></div>
+      </div>
+      <div class="top-note">RELATIONSHIP · SELF-OBSERVATION</div>
+    </header>
+    <main class="cover">
+      <div class="cover-grid">
+        <div class="cover-copy">
+          <div class="kicker fade-up">A STUDY OF AFTER LOVE</div>
+          <h1 class="fade-up delay1">分手后，<br><span class="light">你有多想前任？</span></h1>
+          <p class="cover-desc fade-up delay2">想念一个人，有时是在想念那个人，有时是在想念曾经的自己。用一段小小的自我观察，看看这段关系还在你心里留下了什么。</p>
+          <div class="meta-row fade-up delay2"><span><i class="meta-dot"></i>约 8–10 分钟</span><span><i class="meta-dot"></i>48 道自评题</span><span><i class="meta-dot"></i>即时生成个人报告</span></div>
+          <button class="primary-btn fade-up delay3" id="startBtn">开始观察 <span class="arrow">↗</span></button>
+          <div class="info-strip fade-up delay3">
+            <div class="info-chip"><strong>想念指数</strong><small>你仍被牵动多少</small></div>
+            <div class="info-chip"><strong>依恋反应</strong><small>你如何应对失去</small></div>
+            <div class="info-chip"><strong>恋爱风格</strong><small>你曾如何去爱</small></div>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-orbit"></div><div class="art-thread"></div>
+          <div class="art-core"><div class="art-heart"><svg viewBox="0 0 120 110" fill="none"><path d="M60 96S12 67 12 35C12 9 43 3 60 28 77 3 108 9 108 35c0 32-48 61-48 61Z" fill="#d7a1a4" fill-opacity=".6" stroke="#bb7f86" stroke-width="1.5"/><path d="M60 28c-8 13-8 28 0 40 6 9 14 15 21 20" stroke="#fffaf5" stroke-width="1.5" stroke-linecap="round" opacity=".8"/><path d="M19 46c2 14 13 27 25 35" stroke="#fffaf5" stroke-width="1.2" stroke-linecap="round" opacity=".7"/></svg></div></div>
+          <span class="spark s1">✳</span><span class="spark s2">✧</span><span class="spark s3">·</span>
+          <div class="art-caption">SOME MEMORIES STAY, SOME BEGIN TO FADE</div>
+        </div>
+      </div>
+      <div class="cover-bottom"><span>HSL · SELF-OBSERVATION PROJECT  No. 07</span><span class="disclaimer">本测试用于自我探索，不构成心理诊断或专业评估。</span></div>
+    </main>
+  </div>
+  <div id="assessment" class="assessment" hidden>
+    <div class="shell">
+      <header class="assess-header">
+        <div class="brand"><div class="brand-mark"><svg viewBox="0 0 36 36" fill="none"><path d="M6.5 15.2 10 5.7l7.5 5.2 8-5.2 4 9.6c2.1 7-2.7 14.5-11.2 14.5S4.4 22.2 6.5 15.2Z" stroke="#68786d" stroke-width="1.5" stroke-linejoin="round"/><circle cx="13.2" cy="18" r="1.6" fill="#68786d"/><circle cx="23" cy="18" r="1.6" fill="#68786d"/><path d="M15.5 23.2c1.7 1.5 3.8 1.5 5.4 0" stroke="#c98791" stroke-width="1.5" stroke-linecap="round"/><circle cx="27.6" cy="26.5" r="5.1" stroke="#879b8d" stroke-width="1.3"/><path d="m31.3 30.2 3 3" stroke="#879b8d" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><div class="brand-name">人类切片实验室</div><div class="brand-en">HUMAN SLICE LABORATORY</div></div></div>
+        <div class="step-indicator" id="stepIndicator">01 / 13</div>
+      </header>
+      <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
+      <main class="assess-main" id="questionView"></main>
+      <div class="step-footnote">你的选择仅用于本次本地计算，不会上传或保存到服务器。</div>
+    </div>
+  </div>
+  <div id="results" class="results" hidden>
+    <div class="shell">
+      <header class="assess-header">
+        <div class="brand"><div class="brand-mark"><svg viewBox="0 0 36 36" fill="none"><path d="M6.5 15.2 10 5.7l7.5 5.2 8-5.2 4 9.6c2.1 7-2.7 14.5-11.2 14.5S4.4 22.2 6.5 15.2Z" stroke="#68786d" stroke-width="1.5" stroke-linejoin="round"/><circle cx="13.2" cy="18" r="1.6" fill="#68786d"/><circle cx="23" cy="18" r="1.6" fill="#68786d"/><path d="M15.5 23.2c1.7 1.5 3.8 1.5 5.4 0" stroke="#c98791" stroke-width="1.5" stroke-linecap="round"/><circle cx="27.6" cy="26.5" r="5.1" stroke="#879b8d" stroke-width="1.3"/><path d="m31.3 30.2 3 3" stroke="#879b8d" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><div class="brand-name">人类切片实验室</div><div class="brand-en">HUMAN SLICE LABORATORY</div></div></div>
+        <div class="step-indicator">PERSONAL REPORT · 07</div>
+      </header>
+      <main id="resultContent" class="result-reveal"></main>
+      <div class="footer">人类切片实验室 · HUMAN SLICE LABORATORY<br>我们观察情绪，但不替你定义人生。</div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+const $ = (s,root=document)=>root.querySelector(s);
+const cover=$('#cover'), assessment=$('#assessment'), results=$('#results'), questionView=$('#questionView');
+const scaleLabels=['完全不符合','比较不符','说不清','比较符合','非常符合'];
+const contextQuestions=[
+ {id:'time',title:'距离这段关系结束，已经过去多久？',options:['不到 1 个月','1–3 个月','3–6 个月','6–12 个月','1 年以上']},
+ {id:'initiator',title:'当时是谁提出结束关系？',options:['我提出的','对方提出的','共同决定','逐渐淡去 / 不明确']},
+ {id:'contact',title:'你们现在还保持联系吗？',options:['完全没有联系','偶尔联系 / 互相关注','仍然比较频繁','因工作、学习等无法避免']},
+ {id:'reconcile',title:'如果现在有机会，你对复合的态度更接近？',options:['明确不想复合','会犹豫，但不主动争取','仍然希望重新开始','想念归想念，不确定是否适合']}
+];
+const sections=[
+ {id:'yearning',type:'state',title:'想念回潮',eyebrow:'01 · THE LONGING',intro:'最近两周，当你独处、经过熟悉的地方，或遇到相似的生活片段时，你对 TA 的想念有多容易出现？',items:[
+  '一些很日常的小事，也会让我突然想起 TA。',
+  '看到和 TA 有关的照片、地点或物品时，我会明显被触动。',
+  '我会怀念和 TA 一起生活时，那些熟悉而具体的瞬间。',
+  '即使生活已经继续向前，我仍会希望 TA 能参与某些重要时刻。'
+ ]},
+ {id:'rumination',type:'state',title:'反复回放',eyebrow:'02 · THE REPLAY',intro:'这一部分关注思绪是否容易反复绕回关系本身，而不是简单地判断你有没有想起 TA。',items:[
+  '我会反复回想分手前后的对话，试图找到某个关键原因。',
+  '我常在脑海里设想“如果当时换一种做法，会不会不一样”。',
+  '即使已经想过很多遍，我还是很难停止分析这段关系。',
+  '我会忍不住猜测 TA 现在的生活、想法，或是否也会想起我。'
+ ]},
+ {id:'distress',type:'state',title:'情绪余震',eyebrow:'03 · THE AFTERSHOCK',intro:'回想最近两周，分手这件事对你的情绪、注意力和日常生活还有多大影响？',items:[
+  '想到这段关系时，我仍会出现明显的难过、失落或愤怒。',
+  '这段关系的结束，有时会影响我做事的专注程度。',
+  '情绪被触发时，我需要一段时间才能恢复到平常状态。',
+  '分手带来的变化，仍在影响我的日常节奏或安全感。'
+ ]},
+ {id:'anxiety',type:'state',title:'依恋警报',eyebrow:'04 · THE ATTACHMENT ALARM',intro:'这一组关注失去关系后，对回应、确认和被选择的需要是否仍然强烈。',items:[
+  '我会在意 TA 是否已经彻底放下了这段关系。',
+  '当 TA 没有回应、很少更新或显得疏远时，我容易感到不安。',
+  '我仍然希望从 TA 那里得到解释、确认，或一个明确的态度。',
+  '想到 TA 可能开始新的关系，我会感到明显的不舒服。'
+ ]},
+ {id:'avoidance',type:'state',title:'自我保护',eyebrow:'05 · THE DEFENSE',intro:'有些人通过靠近来处理失去，有些人则会先把情绪收起来。这一组关注你习惯怎样保护自己。',items:[
+  '我会刻意避开可能让我想起 TA 的话题、地点或共同朋友。',
+  '即使心里有情绪，我也倾向于表现得若无其事。',
+  '当别人问起这段关系时，我通常会快速带过，不愿深入谈。',
+  '我会用忙碌、娱乐或新的事情，让自己尽量不要停下来想这段关系。'
+ ]},
+ {id:'recovery',type:'state',title:'重新生长',eyebrow:'06 · THE REBUILDING',intro:'复原不意味着完全忘记，而是慢慢找回自己的生活、边界与方向。请按最近两周的真实状态作答。',items:[
+  '即使偶尔想起 TA，我也能把注意力重新带回当下。',
+  '我正在重新建立不依赖这段关系的生活安排与兴趣。',
+  '我能够承认这段关系有过美好，也有不适合继续的部分。',
+  '我对未来仍有期待，也愿意把新的经历留给自己。'
+ ]},
+ {id:'eros',type:'love',title:'浪漫激情型',eyebrow:'07 · EROS / PASSIONATE',intro:'回想你们仍在一起时的状态。这里不是评价谁更会爱，而是观察你自然偏好的亲密方式。',items:[
+  '这段关系曾让我体验到很强烈的心动与吸引。',
+  '我很看重亲密互动中的浪漫感与情绪浓度。',
+  '两个人之间独特的化学反应，很容易打动我。',
+  '即使进入日常，我也希望关系里保留热烈和仪式感。'
+ ]},
+ {id:'ludus',type:'love',title:'轻盈探索型',eyebrow:'08 · LUDUS / PLAYFUL',intro:'关注自由感、新鲜感与个人空间在你过去的恋爱中占据多大位置。',items:[
+  '即使身处亲密关系，我也需要充足的个人空间。',
+  '比起很快确定关系的规则，我更喜欢自然、轻松地相处。',
+  '我在恋爱中很看重新鲜感与探索感。',
+  '我不希望一段关系占据生活的全部重心。'
+ ]},
+ {id:'storge',type:'love',title:'友伴陪伴型',eyebrow:'09 · STORGE / COMPANIONATE',intro:'关注友情、熟悉感、稳定陪伴与共同生活经验。',items:[
+  '对我来说，爱情常常从朋友般的熟悉与信任中慢慢生长。',
+  '能自然地聊日常，比持续制造浪漫惊喜更让我安心。',
+  '我很珍惜两个人一起经历的小事和共同记忆。',
+  '稳定、舒服的陪伴，比强烈刺激更重要。'
+ ]},
+ {id:'pragma',type:'love',title:'现实契合型',eyebrow:'10 · PRAGMA / PRACTICAL',intro:'关注价值观、生活规划、责任分工与长期适配。',items:[
+  '进入关系时，我会认真考虑彼此的价值观是否契合。',
+  '我会在意两个人对未来生活的规划能否协调。',
+  '遇到矛盾时，我更希望找到实际可行的解决办法。',
+  '责任感、稳定性和现实安排，是爱情的重要组成部分。'
+ ]},
+ {id:'mania',type:'love',title:'高浓度依恋型',eyebrow:'11 · MANIA / INTENSE',intro:'关注关系不确定时的情绪起伏、确认需要与占有感。高分不是缺点，而是提醒你留意自己的安全感来源。',items:[
+  '对方忽冷忽热时，我的情绪很容易随之起伏。',
+  '在关系里，我常常需要确认自己是被重视、被在乎的。',
+  '当对方和别人显得亲近时，我容易产生不安或嫉妒。',
+  '当关系出现不确定，我很难停止确认对方的态度。'
+ ]},
+ {id:'agape',type:'love',title:'照料奉献型',eyebrow:'12 · AGAPE / GIVING',intro:'关注理解、支持与付出。成熟的照料也包含边界：关心对方，不等于忽略自己。',items:[
+  '我愿意认真理解伴侣的处境，并支持对方的真实需要。',
+  '当对方遇到低谷时，我愿意一起面对，而不是立刻抽身。',
+  '发生分歧时，我会努力理解对方的感受与立场。',
+  '我希望两个人的成长与幸福，都能在关系里得到照顾。'
+ ]}
+];
+const allAnswers={context:{},items:{}};
+let currentStep=0;
+const totalSteps=13;
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function showToast(message){const t=$('#toast');t.textContent=message;t.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.remove('show'),2100);}
+function scoreOf(id){const vals=sections.find(s=>s.id===id).items.map((_,i)=>allAnswers.items[id+'_'+i]);const avg=vals.reduce((a,b)=>a+b,0)/vals.length;return Math.max(0,Math.min(100,Math.round((avg-1)*25)));}
+function getSectionIndex(){return currentStep-1;}
+function pageComplete(){if(currentStep===0)return contextQuestions.every(q=>allAnswers.context[q.id]!==undefined);const sec=sections[getSectionIndex()];return sec.items.every((_,i)=>allAnswers.items[sec.id+'_'+i]!==undefined);}
+function updateProgress(){const n=currentStep+1;$('#stepIndicator').textContent=String(n).padStart(2,'0')+' / '+totalSteps;$('#progressFill').style.width=(n/totalSteps*100)+'%';}
+function start(){cover.hidden=true;assessment.hidden=false;results.hidden=true;currentStep=0;renderStep();}
+function renderContext(){
+ const cards=contextQuestions.map((q,i)=>`<div class="context-card"><label>${String(i+1).padStart(2,'0')}　${escapeHTML(q.title)}</label><div class="context-options">${q.options.map(opt=>`<button type="button" class="context-option ${allAnswers.context[q.id]===opt?'selected':''}" data-context="${q.id}" data-value="${escapeHTML(opt)}">${escapeHTML(opt)}</button>`).join('')}</div></div>`).join('');
+ return `<div class="section-eyebrow">PREPARATION · RELATIONSHIP CONTEXT</div><h2 class="section-title">先回到这段关系的现场</h2><p class="section-intro">这几项背景信息不会直接计入分数，只用于帮助解释结果。请选择最接近你实际情况的选项。</p><div class="context-grid">${cards}</div><div class="nav-row"><button class="secondary-btn" type="button" id="backBtn">返回首页</button><button class="primary-btn next-btn" type="button" id="nextBtn" ${pageComplete()?'':'disabled'}>进入自我观察 <span class="arrow">→</span></button></div>`;
+}
+function renderQuestionSection(sec){
+ const base=sections.slice(0,getSectionIndex()).reduce((n,s)=>n+s.items.length,0);
+ const list=sec.items.map((text,i)=>{
+  const id=sec.id+'_'+i,answer=allAnswers.items[id];
+  return `<article class="question-card"><div class="question-head"><span class="question-no">${String(base+i+1).padStart(2,'0')}</span><div class="question-text">${escapeHTML(text)}</div></div><div class="scale-row" role="group" aria-label="${escapeHTML(text)}">${scaleLabels.map((label,j)=>`<button type="button" class="scale-btn ${answer===j+1?'selected':''}" data-answer="${id}" data-value="${j+1}" aria-pressed="${answer===j+1}"><b>${j+1}</b><small>${label}</small></button>`).join('')}</div></article>`;
+ }).join('');
+ const sectionCount=sec.type==='state'?'分手后的当下状态':'过去关系中的偏好';
+ return `<div class="section-eyebrow">${sec.eyebrow}</div><h2 class="section-title">${sec.title}</h2><p class="section-intro">${sec.intro}<br><span style="color:#a0a198">回答范围：${sec.type==='state'?'最近两周':'回想你们仍在一起时'} · ${sectionCount}</span></p><div class="question-list">${list}</div><div class="scale-hint"><span>1 · 完全不符合</span><span>5 · 非常符合</span></div><div class="nav-row"><button class="secondary-btn" type="button" id="backBtn">← 上一部分</button><button class="primary-btn next-btn" type="button" id="nextBtn" ${pageComplete()?'':'disabled'}>${currentStep===12?'生成我的报告':'继续下一部分'} <span class="arrow">→</span></button></div>`;
+}
+function renderStep(){
+ updateProgress();
+ questionView.innerHTML=currentStep===0?renderContext():renderQuestionSection(sections[getSectionIndex()]);
+ questionView.classList.remove('fade-up');void questionView.offsetWidth;questionView.classList.add('fade-up');
+ $('#nextBtn').addEventListener('click',()=>{if(!pageComplete()){showToast('还有选项没有完成哦');return;}if(currentStep<12){currentStep++;renderStep();}else finish();});
+ $('#backBtn').addEventListener('click',()=>{if(currentStep===0){assessment.hidden=true;cover.hidden=false;}else{currentStep--;renderStep();}});
+}
+questionView.addEventListener('click',e=>{
+ const ctx=e.target.closest('[data-context]');if(ctx){allAnswers.context[ctx.dataset.context]=ctx.dataset.value;questionView.querySelectorAll(`[data-context="${ctx.dataset.context}"]`).forEach(b=>{b.classList.toggle('selected',b===ctx)});$('#nextBtn').disabled=!pageComplete();return;}
+ const ans=e.target.closest('[data-answer]');if(ans){allAnswers.items[ans.dataset.answer]=Number(ans.dataset.value);const group=ans.parentElement;group.querySelectorAll('.scale-btn').forEach(b=>{const yes=b===ans;b.classList.toggle('selected',yes);b.setAttribute('aria-pressed',yes?'true':'false')});$('#nextBtn').disabled=!pageComplete();}
+});
+function clamp(n){return Math.max(0,Math.min(100,n));}
+function tier(v){return v>=75?'高':v>=45?'中': '低';}
+function stateText(id,v){const high=v>=70,mid=v>=40;const copy={
+ yearning:[high?'想念仍然很容易被生活细节唤起。你怀念的可能不只是一个人，也包括曾经共享的节奏、习惯和被陪伴的感觉。':mid?'想念会在某些特定场景里出现，但它并非一直占据你的注意力。你正在经历一种时近时远的回望。':'这段关系留下的情绪印记目前较轻。偶尔想起并不代表你没有认真爱过，只说明它不再频繁牵动当下。'],
+ rumination:[high?'你的思绪似乎还在寻找一个完整解释：为什么结束、哪里出了错、有没有另一种可能。反复思考有时能帮助整理经验，但若始终没有新信息，也容易变成消耗。':mid?'你偶尔会回放关键片段，尤其在遇到触发点时。思考正在发生，但未必已经成为生活的中心。':'你较少陷入反复推演，能够容许一些问题暂时没有答案。'],
+ distress:[high?'分手的余震仍会影响情绪或日常节奏。此时不必急着证明自己已经放下，先把睡眠、饮食、工作学习和支持系统照顾好。':mid?'情绪仍会有波动，但多数时候可以回到日常。它可能更像偶发的浪潮，而不是持续的风暴。':'目前这段关系对日常生活的干扰较少。你可能已经逐渐建立起新的节奏。'],
+ anxiety:[high?'你对关系中的回应、态度和被选择感仍较敏感。想要确认并不丢脸，但可以把一部分确认感慢慢还给自己，而不是完全交由对方的反应决定。':mid?'你仍会在意对方的态度，但不一定需要持续获得回应。特定情境可能让安全感短暂起伏。':'你目前对对方反馈的依赖较低，比较能够容纳关系已经结束这一事实。'],
+ avoidance:[high?'你可能更习惯把情绪收起来，减少接触相关的人事物。这样的方式能提供短期空间，但也值得留意：回避是否让你无法表达真正的需要。':mid?'你会在靠近与回避之间切换：有时愿意面对，有时又需要先把情绪放到一边。':'你较少通过强烈回避来处理这段关系，能够在一定程度上接触自己的感受。'],
+ recovery:[high?'你正在把注意力重新放回自己：生活有了新的支点，也开始允许过去留在过去。复原不等于彻底遗忘，而是记忆不再替你做决定。':mid?'你已经出现一些重新生长的迹象，但仍可能在某些日子被回忆拉回。恢复本来就不是直线。':'你可能还没有完全找回自己的节奏。先不必给自己设定“应该放下”的期限，从很小的生活选择开始即可。']
+ };return copy[id][0];}
+const styleMeta={
+ eros:{name:'浪漫激情',short:'浪漫',color:'#c98791',desc:'你倾向于通过心动、吸引、浓度和仪式感体验爱情。关系中的火花与情绪表达，对你有较强的意义。'},
+ ludus:{name:'轻盈探索',short:'自由',color:'#9c9aaa',desc:'你重视新鲜感、独立空间与关系中的松弛感。亲密不意味着失去自我，保留自己的生活对你很重要。'},
+ storge:{name:'友伴陪伴',short:'陪伴',color:'#879b8d',desc:'你更相信熟悉、信任和日常陪伴的力量。爱情对你而言，是能够成为彼此生活队友的关系。'},
+ pragma:{name:'现实契合',short:'契合',color:'#c4b69e',desc:'你在意价值观、生活方向和长期适配。你希望感情不仅有感觉，也能在现实生活中运转。'},
+ mania:{name:'高浓度依恋',short:'依恋',color:'#b9828d',desc:'你在关系中投入感受较深，对回应和确定性比较敏感。学习安抚自己、建立边界，会让亲密更轻松。'},
+ agape:{name:'照料奉献',short:'照料',color:'#8d9ca8',desc:'你习惯理解、支持和照顾对方，愿意为关系投入心力。也别忘记：健康的爱应当同时容纳双方的需要。'}
+};
+function getMissIndex(s){return Math.round(.35*s.yearning+.25*s.rumination+.20*s.distress+.20*s.anxiety);}
+function missLabel(v){if(v<20)return ['想念退潮中','这段关系仍然是你经历的一部分，但它已经较少占据当下。你或许还会偶尔想起 TA，只是更多时候，生活的重心已经回到自己身上。'];if(v<40)return ['偶尔回望','你并非完全没有留恋，只是想念通常有自己的来去。某些熟悉的触发点会让你停顿片刻，但你大多仍能继续当下的生活。'];if(v<60)return ['心里仍有回声','这段关系在你心里还留有一定空间。想念、遗憾或未完成感可能交替出现，你正在尝试理解过去，也在慢慢调整现在。'];if(v<80)return ['心绪容易被牵引','前任相关的记忆仍然比较容易影响你的情绪与注意力。你可能怀念对方，也可能在寻找解释、确认或一个不同的结局。'];return ['思念占据前台','这段关系目前仍然占据你较多的心理空间。无论你想念的是 TA、曾经的生活，还是没有得到的答案，都值得被认真看见，而不是被催促着消失。'];}
+function attachmentType(anx,avoid){if(anx<50&&avoid<50)return ['稳定整理型','你在失去关系后较少陷入持续的确认需求，也不太需要用强烈抽离来保护自己。你更可能通过理解、整理和重建日常来处理分手。'];if(anx>=50&&avoid<50)return ['靠近确认型','关系结束后，你可能仍希望得到解释、回应或重新连接。你的情绪容易被对方的态度触发，安全感也可能暂时系在对方身上。'];if(anx<50&&avoid>=50)return ['抽离自护型','你更倾向于拉开距离、降低情绪暴露，借由独立和控制接触来恢复稳定。给自己空间是可以的，也可以留意是否把真正的感受一起关掉了。'];return ['拉扯摆荡型','你可能同时渴望靠近和害怕再次受伤：一方面想确认对方的态度，另一方面又想迅速拉开距离。矛盾本身并不奇怪，慢慢辨认每一种需要即可。'];}
+function makeRadar(values){
+ const labels=[['想念强度',0,-12],['反复回放',18,0],['情绪余震',18,15],['依恋焦虑',0,24],['回避防御',-20,15],['自我复原',-20,-2]];
+ const cx=210,cy=170,r=108;
+ // 每个维度必须分别计算半径；避免把整组数组误当作单一数值，产生 NaN 坐标。
+ const safeValues=labels.map((_,i)=>clamp(Number(values && values[i])||0));
+ const pointAt=(index,value)=>{const a=(-Math.PI/2)+index*Math.PI/3;const rr=r*clamp(value)/100;return [cx+Math.cos(a)*rr,cy+Math.sin(a)*rr];};
+ const ringPoints=(value)=>labels.map((_,i)=>pointAt(i,value));
+ let rings='';
+ [25,50,75,100].forEach(n=>{
+  rings+=`<polygon points="${ringPoints(n).map(p=>p.join(',')).join(' ')}" fill="none" stroke="#e7e5df" stroke-width="1"/>`;
+ });
+ let spokes='';
+ labels.forEach((l,i)=>{const [x,y]=pointAt(i,100);spokes+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e5e3dc" stroke-width="1"/>`;});
+ const dataPoints=safeValues.map((value,i)=>pointAt(i,value));
+ const shape=dataPoints.map(p=>p.join(',')).join(' ');
+ const dots=dataPoints.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="#879b8d" stroke="#fbfaf7" stroke-width="2"><title>${labels[i][0]}：${safeValues[i]} 分</title></circle>`).join('');
+ const texts=labels.map((l,i)=>{
+  const a=(-Math.PI/2)+i*Math.PI/3;
+  const x=cx+Math.cos(a)*(r+31)+l[1],y=cy+Math.sin(a)*(r+25)+l[2];
+  let anchor='middle';if(Math.cos(a)>.25)anchor='start';if(Math.cos(a)<-.25)anchor='end';
+  return `<text x="${x}" y="${y}" text-anchor="${anchor}" dominant-baseline="middle"><tspan x="${x}" dy="-3">${l[0]}</tspan><tspan x="${x}" dy="14" fill="#879b8d" font-size="10" font-weight="700">${safeValues[i]} 分</tspan></text>`;
+ }).join('');
+ const scaleLabels=`<g fill="#b0b2aa" font-size="9" font-family="Microsoft YaHei,微软雅黑,sans-serif"><text x="215" y="165">0</text><text x="215" y="143">25</text><text x="215" y="116">50</text><text x="215" y="89">75</text></g>`;
+ return `<svg class="radar-svg" viewBox="0 0 440 365" role="img" aria-label="六维自我观察雷达图，${labels.map((l,i)=>l[0]+' '+safeValues[i]+'分').join('，')}">${rings}${spokes}${scaleLabels}<polygon points="${shape}" fill="rgba(135,155,141,.25)" stroke="#718d7c" stroke-width="2.5" stroke-linejoin="round"/>${dots}${texts}</svg>`;
+}
+function makeAttachPlot(anx,avoid){
+ const x=65+avoid*3.4,y=234-anx*2.08;
+ return `<svg class="attachment-chart" viewBox="0 0 470 300" role="img" aria-label="依恋反应倾向坐标图"><rect x="65" y="26" width="170" height="104" rx="8" fill="#f4e9e8"/><rect x="235" y="26" width="170" height="104" rx="8" fill="#eee8ed"/><rect x="65" y="130" width="170" height="104" rx="8" fill="#edf1eb"/><rect x="235" y="130" width="170" height="104" rx="8" fill="#e9eef0"/><line x1="235" y1="26" x2="235" y2="234" stroke="#fff" stroke-width="2"/><line x1="65" y1="130" x2="405" y2="130" stroke="#fff" stroke-width="2"/><text x="150" y="50" text-anchor="middle">靠近确认型</text><text x="320" y="50" text-anchor="middle">拉扯摆荡型</text><text x="150" y="216" text-anchor="middle">稳定整理型</text><text x="320" y="216" text-anchor="middle">抽离自护型</text><line x1="65" y1="234" x2="405" y2="234" stroke="#aeb3aa" stroke-width="1.2"/><line x1="65" y1="26" x2="65" y2="234" stroke="#aeb3aa" stroke-width="1.2"/><circle cx="${x}" cy="${y}" r="10" fill="#c98791" stroke="#fff" stroke-width="4"/><circle cx="${x}" cy="${y}" r="15" fill="none" stroke="#c98791" stroke-opacity=".45" stroke-width="1.5"><animate attributeName="r" values="12;19;12" dur="2.4s" repeatCount="indefinite"/><animate attributeName="stroke-opacity" values=".5;0;.5" dur="2.4s" repeatCount="indefinite"/></circle><text x="235" y="270" text-anchor="middle">回避防御　低 ← → 高</text><text x="14" y="134" text-anchor="middle" transform="rotate(-90 14 134)">依恋焦虑　低 ← → 高</text><text x="67" y="250">低</text><text x="392" y="250" text-anchor="end">高</text></svg>`;
+}
+function buildRecommendations(s){
+ const rec=[];
+ if(s.rumination>=55)rec.push(['给思绪一个容器','每天留出 10–15 分钟写下反复出现的问题，并区分“我知道的事实”和“我正在猜测的部分”。时间结束后，把注意力转回一件具体的小事。']);
+ if(s.anxiety>=55)rec.push(['把确认感慢慢还给自己','当你很想查看动态或联系对方时，先暂停十分钟，写下此刻真正想获得的是什么：解释、安慰、肯定，还是陪伴。尝试从可信任的人或自己的行动中获得一部分支持。']);
+ if(s.distress>=55)rec.push(['先照顾生活的底盘','暂时把恢复目标缩小到可执行的日常：规律吃饭、睡眠、散步和完成一件小任务。情绪强烈时，不必独自消化，可以向信任的人求助。']);
+ if(s.avoidance>=60&&s.recovery<55)rec.push(['给感受留一点安全空间','你不需要一次讲完所有故事。可以先用几句话记录“发生了什么、我感到什么、我需要什么”，不急着评价自己。']);
+ if(s.yearning>=60)rec.push(['分清怀念的对象','试着列出你怀念的具体片段，再标记其中哪些来自 TA，哪些来自当时的生活状态、习惯或被陪伴的感觉。这样能更清楚地看见自己的真实需要。']);
+ if(s.recovery>=65)rec.push(['继续扩展自己的生活半径','保留那些让你感到有能量的新习惯，重新安排朋友、兴趣和未来计划。你可以记得过去，也可以继续为新的经验腾出位置。']);
+ const defaults=[['建立一个小小的边界','选择一个让自己更稳定的边界，例如减少反复查看动态、暂时整理共同物品，或给联系设定清晰规则。'],['重新连接现实支持','找一个能够倾听而不急着评判的人，约一次散步、吃饭或短暂通话。被支持不等于软弱。'],['用自己的速度恢复','不必用“完全放下”作为唯一目标。试着观察这周是否比上周多拥有一点属于自己的时间。']];
+ for(const d of defaults){if(rec.length>=3)break;rec.push(d)}
+ return rec.slice(0,3);
+}
+function contextNarrative(c){
+ const time=c.time||'未填写',init=c.initiator||'未填写',contact=c.contact||'未填写',reconcile=c.reconcile||'未填写';
+ let parts=[];
+ if(time==='不到 1 个月')parts.push('分手时间还很近，想念和情绪波动可能仍处在较活跃的阶段，不必拿“恢复得够不够快”要求自己。');
+ else if(time==='1–3 个月'||time==='3–6 个月')parts.push('你已经经历了一段适应期，但恢复仍可能反复。某些触发点让你回头，并不代表此前的努力失效。');
+ else if(time==='6–12 个月'||time==='1 年以上')parts.push('这段关系已经离开日常一段时间。如果某些情绪仍然明显，值得关注的不是“为什么还没忘”，而是它现在具体牵动着你什么。');
+ if(init==='对方提出的')parts.push('关系由对方提出结束，可能让你更在意解释、被选择感或未完成感；请留意这些需要是否仍被交给对方回应。');
+ if(contact==='仍然比较频繁'||contact==='因工作、学习等无法避免')parts.push('你们仍有联系或接触，情绪可能会被新的互动持续唤起。清晰、可执行的边界有时比反复猜测对方态度更有帮助。');
+ if(contact==='完全没有联系')parts.push('目前没有联系，能减少部分外部触发；但没有联系不一定意味着情绪自动结束，仍可以慢慢整理内在的牵挂。');
+ if(reconcile==='仍然希望重新开始')parts.push('你仍保留复合期待。可以把“我想重新开始”和“这段关系是否真的具备改变条件”分开考虑。');
+ else if(reconcile==='明确不想复合')parts.push('你明确不想复合，但想念仍可能存在。怀念一段关系与希望回到关系里，是两件不同的事。');
+ else if(reconcile==='想念归想念，不确定是否适合')parts.push('你能够区分情感留恋与现实适配，这种犹豫值得被认真对待，不必急着把它变成一个决定。');
+ return parts.join(' ');
+}
+function dominantNeed(s){const choices=[['yearning','陪伴与日常'],['rumination','一个没有闭合的问号'],['distress','生活秩序与情绪安全'],['anxiety','被确认、被选择的感觉']];choices.sort((a,b)=>s[b[0]]-s[a[0]]);const key=choices[0][0];const texts={yearning:'你最突出的牵挂，可能与曾经共享的生活细节有关。那些熟悉的称呼、习惯和日常片段，容易让人误以为自己只是在想念一个人。',rumination:'你最突出的牵挂，可能来自一个尚未得到答案的问题。比起继续寻找唯一解释，或许更有帮助的是承认：有些关系的结束并不会留下完整答案。',distress:'你最突出的牵挂，可能与关系结束后生活结构的变化有关。失去的不只是伴侣，也可能包括习惯、计划、社交圈或稳定感。',anxiety:'你最突出的牵挂，可能与“我是否仍然重要”“我是否值得被坚定选择”有关。试着把自我价值与某一个人的回应分开。'};return {title:choices[0][1],text:texts[key]};}
+function finish(){
+ const s={};['yearning','rumination','distress','anxiety','avoidance','recovery'].forEach(id=>s[id]=scoreOf(id));
+ const styles=sections.filter(x=>x.type==='love').map(x=>({id:x.id,...styleMeta[x.id],score:scoreOf(x.id)})).sort((a,b)=>b.score-a.score);
+ const miss=getMissIndex(s),[mlabel,mdesc]=missLabel(miss),[atype,adesc]=attachmentType(s.anxiety,s.avoidance);
+ const stateDefs=[['yearning','想念强度'],['rumination','反复回放'],['distress','情绪余震'],['anxiety','依恋焦虑'],['avoidance','回避防御'],['recovery','自我复原']];
+ const stylesHTML=styles.map(st=>`<div class="style-row"><div class="style-name"><i class="style-mark" style="--bar-color:${st.color}"></i>${st.name}</div><div class="style-track"><div class="style-fill" data-width="${st.score}" style="--bar-color:${st.color}"></div></div><div class="style-num">${st.score}</div></div>`).join('');
+ const componentHTML=[['想念',s.yearning,35],['反刍',s.rumination,25],['情绪影响',s.distress,20],['依恋焦虑',s.anxiety,20]].map(([name,val,weight])=>`<div class="component-line"><span class="label">${name} · ${weight}%</span><div class="mini-track"><div class="mini-fill" data-width="${val}" style="background:${name==='想念'?'#c98791':name==='反刍'?'#a18e9d':name==='情绪影响'?'#c4b69e':'#8c9ca9'}"></div></div><span class="num">${val}</span></div>`).join('');
+ const detailsHTML=stateDefs.map(([id,label],i)=>`<div class="detail-item"><strong>${label} · ${s[id]}</strong><p>${stateText(id,s[id])}</p></div>`).join('');
+ const styleTextTop=styles.slice(0,2).map(st=>st.name).join(' + ');
+ const styleDescs=styles.slice(0,2).map(st=>`<b>${st.name}</b>：${st.desc}`).join('<br>');
+ const allStyleNotes=styles.map(st=>`<div class="style-note-row"><span class="style-note-dot" style="background:${st.color}"></span><div><b>${st.name} · ${st.score}</b><p>${st.desc}</p></div></div>`).join('');
+ const dominant=dominantNeed(s),recs=buildRecommendations(s);
+ const recHTML=recs.map((r,i)=>`<article class="recommend"><div class="rec-index">STEP 0${i+1}</div><h4>${r[0]}</h4><p>${r[1]}</p></article>`).join('');
+ const report=`
+ <section class="result-top result-reveal">
+  <div><div class="result-kicker">YOUR POST-BREAKUP INDEX · 01</div><h2>${mlabel}</h2><p>${mdesc}</p><div style="margin-top:17px;font-size:10px;color:#829083;letter-spacing:.08em">想念指数由想念、反刍、情绪余震与依恋焦虑加权计算</div></div>
+  <div class="score-side"><div class="score-ring"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="70"/><circle class="ring-val" id="scoreArc" cx="80" cy="80" r="70"/></svg><div><div class="score-num" id="scoreNumber">0</div><div class="score-unit">OUT OF 100</div></div></div></div>
+ </section>
+ <div class="result-grid">
+  <section class="panel"><div class="panel-head"><div><h3 class="panel-title">分手后的六维状态</h3><div class="panel-sub">六个侧面，组成你此刻的情绪切片</div></div><span class="panel-tag">RADAR</span></div><div class="radar-wrap">${makeRadar([s.yearning,s.rumination,s.distress,s.anxiety,s.avoidance,s.recovery])}</div><div class="legend-note">分数越高，代表该维度表现越明显；复原维度高分代表复原推进较多。</div></section>
+  <section class="panel"><div class="panel-head"><div><h3 class="panel-title">想念指数的构成</h3><div class="panel-sub">这不是单一的“还爱不爱”</div></div><span class="panel-tag">INDEX MIX</span></div><div class="component-list">${componentHTML}</div><div class="top-style-note">想念指数 = 想念强度 × 35% + 反复回放 × 25% + 情绪余震 × 20% + 依恋焦虑 × 20%。它是本测试的探索性合成指标，不是临床量表分数。</div></section>
+  <section class="panel"><div class="panel-head"><div><h3 class="panel-title">你的依恋应对倾向</h3><div class="panel-sub">依恋焦虑 × 回避防御</div></div><span class="panel-tag">ATTACHMENT MAP</span></div>${makeAttachPlot(s.anxiety,s.avoidance)}<div class="attachment-summary"><b>${atype}</b><br>${adesc}<br><span style="opacity:.8">焦虑 ${s.anxiety} / 100　·　回避 ${s.avoidance} / 100</span></div></section>
+  <section class="panel"><div class="panel-head"><div><h3 class="panel-title">你曾经如何去爱</h3><div class="panel-sub">六种恋爱风格倾向排序</div></div><span class="panel-tag">LOVE STYLE</span></div><div class="style-bars">${stylesHTML}</div><div class="top-style-note"><b>主要风格：${styleTextTop}</b><br>${styleDescs}<br><span style="color:#999b94">风格可以同时存在，没有高低优劣，也不代表固定人格。</span></div><details class="style-details"><summary>展开查看六种风格的完整解释</summary><div class="style-note-list">${allStyleNotes}</div></details></section>
+  <section class="panel wide"><div class="panel-head"><div><h3 class="panel-title">你现在的情绪切片</h3><div class="panel-sub">从高分维度中，看看可能正在发生什么</div></div><span class="panel-tag">OBSERVATION NOTES</span></div><div class="detail-list">${detailsHTML}</div></section>
+  <section class="panel wide"><div class="panel-head"><div><h3 class="panel-title">你可能真正舍不得的</h3><div class="panel-sub">根据本次得分最高的牵挂维度生成的观察线索</div></div></div><div class="insight-grid"><article class="insight"><div class="num">01 / CORE NEED</div><h4>${dominant.title}</h4><p>${dominant.text}</p></article><article class="insight"><div class="num">02 / LOVE STYLE</div><h4>${styles[0].name}</h4><p>${styles[0].desc}</p></article><article class="insight"><div class="num">03 / RECOVERY</div><h4>${s.recovery>=65?'正在重新长出自己的生活':'给自己一点恢复的余地'}</h4><p>${s.recovery>=65?'你已经出现了一些回到自己的迹象。让新的生活经验继续累积，不必要求自己抹掉曾经。':'你不需要立刻完成“放下”。先从恢复生活节奏、重建边界和接收支持开始。'}</p></article></div></section>
+  <section class="panel wide"><div class="panel-head"><div><h3 class="panel-title">结合你的关系背景</h3><div class="panel-sub">背景选项不参与计分，只为结果增加语境</div></div><span class="panel-tag">YOUR CONTEXT</span></div><div class="context-note">${escapeHTML(contextNarrative(allAnswers.context))}</div></section>
+  <section class="panel wide"><div class="panel-head"><div><h3 class="panel-title">给接下来的自己</h3><div class="panel-sub">不是标准答案，而是可以尝试的小行动</div></div><span class="panel-tag">GENTLE NEXT STEPS</span></div><div class="recommend-list">${recHTML}</div><p style="font-size:10px;color:#9a9d95;margin:15px 0 0;line-height:1.8">如果分手后的情绪持续严重影响睡眠、饮食、工作或学习，或让你感到难以独自承受，可以考虑向可信任的人或合格的心理专业人员寻求支持。</p></section>
+ </div>
+ <div class="result-actions"><button class="primary-btn" id="printBtn">保存 / 打印报告 <span class="arrow">↗</span></button><button class="secondary-btn" id="restartBtn">重新测试</button></div>
+ <details class="method-details"><summary>测试依据与计分说明 · 阅读方法</summary><div class="method-content"><p><b>本测试由 48 道原创自评题与 4 道背景题组成。</b>前 24 题覆盖想念、关系反刍、分手情绪影响、依恋焦虑、回避防御与自我复原六个观察维度；后 24 题借鉴六种恋爱风格理论，每种风格 4 题。全部量表题采用 5 点符合度评分。</p><p>题目构念参考了以下研究与量表框架，但本测试并非上述量表的正式中文版，也没有经过独立的信效度检验或常模建立；各项分数仅用于个人自我观察，不宜用于诊断、筛选或重大关系决策。</p><ol><li>分手痛苦：Break-up Distress Scale（BDS）及其中国大学生样本的信效度研究。中文版本研究报告了单维结构及较高内部一致性。<a href="https://doi.org/10.3389/fpsyg.2025.1615021" target="_blank" rel="noopener">Frontiers in Psychology（2025）</a></li><li>分手后的依恋、痛苦、反刍与个人成长：Marshall 等（2013），研究讨论了依恋焦虑、依恋回避、分手痛苦与反刍之间的关联。<a href="https://doi.org/10.1371/journal.pone.0075161" target="_blank" rel="noopener">PLOS ONE（2013）</a></li><li>关系反刍：关系反刍问卷研究提出浪漫专注、关系不确定与分手反刍等维度。<a href="https://doi.org/10.1016/j.paid.2015.10.032" target="_blank" rel="noopener">Personality and Individual Differences（2016）</a></li><li>成人依恋：ECR-R 以依恋焦虑与依恋回避作为两个连续维度。<a href="https://doi.org/10.1177/0146167205276865" target="_blank" rel="noopener">Sibley, Fischer & Liu（2005）</a></li><li>六种恋爱风格：Lee 的爱情颜色理论及 Hendrick &amp; Hendrick 的 Love Attitudes Scale，包括 Eros、Ludus、Storge、Pragma、Mania 与 Agape。<a href="https://backend.fetzer.org/sites/default/files/images/stories/pdf/selfmeasures/Different_Types_of_Love_SPECIFIC_LOVE_ATTITUDES.pdf" target="_blank" rel="noopener">Fetzer Institute：Relationship-Specific Love Attitudes Scale</a></li></ol><p><b>计分：</b>每个维度由 4 题平均分换算为 0–100。想念指数按想念 35%、反刍 25%、情绪余震 20%、依恋焦虑 20% 加权；依恋类型以焦虑与回避各自 50 分为探索性分界。该阈值并非临床或群体常模。</p><p><b>隐私：</b>答题和计分均在当前浏览器本地完成，不会向服务器发送答案；刷新或关闭页面后，本次答题记录不会保留。</p></div></details>`;
+ cover.hidden=true;assessment.hidden=true;results.hidden=false;$('#resultContent').innerHTML=report;
+ const arc=$('#scoreArc');const circumference=2*Math.PI*70;arc.style.strokeDasharray=circumference;requestAnimationFrame(()=>{arc.style.strokeDashoffset=circumference*(1-miss/100)});
+ const num=$('#scoreNumber');const startAt=performance.now(),duration=1250;function count(now){const p=Math.min(1,(now-startAt)/duration);num.textContent=Math.round(miss*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(count);}requestAnimationFrame(count);
+ setTimeout(()=>{$$('.style-fill').forEach(el=>el.style.width=el.dataset.width+'%');$$('.mini-fill').forEach(el=>el.style.width=el.dataset.width+'%');},120);
+ $('#printBtn').addEventListener('click',()=>window.print());
+ $('#restartBtn').addEventListener('click',()=>{Object.keys(allAnswers.context).forEach(k=>delete allAnswers.context[k]);Object.keys(allAnswers.items).forEach(k=>delete allAnswers.items[k]);start();});
+}
+function $$(s,root=document){return Array.from(root.querySelectorAll(s));}
+$('#startBtn').addEventListener('click',start);
+})();
+</script>
+</body>
+</html>
